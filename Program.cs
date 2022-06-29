@@ -95,7 +95,6 @@ namespace ConsoleApp
                     {
                         List<string> newCategory = AnsiConsole.Ask<string>("Enter new categories: [green]seperate them by adding a dash - [/]?").Split("-").ToList();
                         menu.Find(r => r.Title == title).Categories = newCategory;
-
                     }
                     else if (choiceEdit == "instructions")
                     {
