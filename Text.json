@@ -1,0 +1,18 @@
+[
+  {
+    "Ingredients": [
+      "milk",
+      "cocoa powder",
+      "whipped cream"
+    ],
+    "Title": "Chocolate Milkshake",
+    "Instructions": [
+      "put the milk and cocoa powder in a blender",
+      " top with whipped cream"
+    ],
+    "Categories": [
+      "Drinks",
+      "Brunch"
+    ]
+  }
+]
