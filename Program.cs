@@ -11,7 +11,7 @@ string sFile = System.IO.Path.Combine(sCurrentDirectory, @"..\..\..\Text.json");
 string sFilePath = Path.GetFullPath(sFile);
 
 // Emptying the json file at the start of each run.
-File.WriteAllText(sFilePath, "[]");
+//File.WriteAllText(sFilePath, "[]");
 
 // Looping till the user chooses to exit.
 while (true)
@@ -112,10 +112,34 @@ while (true)
         AnsiConsole.Clear();
 
     }
-    // Listing recipes.
+    // Listing a recipe.
     else if (userChoice == "List")
     {
+        string jsonString = File.ReadAllText(sFilePath);
+        List<Recipe> menu = System.Text.Json.JsonSerializer.Deserialize<List<Recipe>>(jsonString);
+        string listTitle = AnsiConsole.Ask<string>("Enter the title of the recipe to list:");
+        Recipe foundRecipe = menu.Find(r => r.Title == listTitle);
 
+        AnsiConsole.MarkupLine("[green]Ingredients: [/]");
+        for (int i = 0; i < foundRecipe.Ingredients.Count; i++)
+            AnsiConsole.Write(foundRecipe.Ingredients[i] + " ");
+
+        AnsiConsole.Write("\n");
+        AnsiConsole.MarkupLine("[green]Instructions: [/]");
+        for (int i = 0; i < foundRecipe.Instructions.Count; i++)
+            AnsiConsole.Write(foundRecipe.Instructions[i]);
+
+        AnsiConsole.Write("\n");
+        AnsiConsole.MarkupLine("[green]Categories: [/]");
+        for (int i = 0; i < foundRecipe.Categories.Count; i++)
+            AnsiConsole.Write(foundRecipe.Categories[i]);
+
+        bool mainMenu = AnsiConsole.Confirm("Do you want to return to main menu?");
+        if (!mainMenu)
+        {
+            break;
+        }
+        AnsiConsole.Clear();
     }
     // Exiting.
     else
