@@ -11,7 +11,7 @@ string sFile = System.IO.Path.Combine(sCurrentDirectory, @"..\..\..\Text.json");
 string sFilePath = Path.GetFullPath(sFile);
 
 // Emptying the json file at the start of each run.
-//File.WriteAllText(sFilePath, "[]");
+File.WriteAllText(sFilePath, "[]");
 
 // Looping till the user chooses to exit.
 while (true)
