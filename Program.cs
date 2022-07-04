@@ -43,7 +43,6 @@ while (true)
         List<string> recipeInstructions = AnsiConsole.Ask<string>("3)Instructions: [grey]seperate them by adding a - [/] ").Split("-").ToList();
         List<string> recipeCategories = AnsiConsole.Ask<string>("4)Categories: [grey]seperate them by adding a - [/] ").Split("-").ToList();
 
-
         var recipe = new Recipe(recipeIngredients, recipeTitle, recipeInstructions, recipeCategories);
         var options = new JsonSerializerOptions { WriteIndented = true };
         string jsonString = File.ReadAllText(sFilePath);
